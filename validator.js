@@ -16,7 +16,7 @@ const ADD_DETAILED_MESSAGE = true;
 const check = async function(dgc, enforced) {
 
 	// initial update
-	Service.updateAll();
+	await Service.updateAll();
 	
 	// load DGC
 	let dcc;

@@ -2,8 +2,8 @@ FROM node
 
 WORKDIR /usr/share/app
 
-COPY package*.json .
+COPY package*.json ./
 RUN npm install
 
-COPY * .
+COPY * ./
 CMD [ "node", "index.js" ]
