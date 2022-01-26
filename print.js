@@ -4,7 +4,7 @@ const { callbackify } = require('util');
 
 const pdf = function(details, res) {
 
-    const doc = new PDFDocument({size: 'A4', margin: 15});
+    const doc = new PDFDocument({size: 'A4', layout: 'landscape', margin: 15});
 
     doc.pipe(res);
 
@@ -23,7 +23,7 @@ const pdf = function(details, res) {
 
     // doc.moveDown()
     doc.fontSize(10)
-    doc.text("Scadenza Pass: "+details.expire, {
+    doc.text("Scad. GreenPass: "+details.expire, {
     width: 140,
     align: 'left'
     })
@@ -32,13 +32,14 @@ const pdf = function(details, res) {
     // doc.fontSize(8)
     // doc.text("realizzato da", {align: 'left'});
     doc.fontSize(10)
-    doc.text("realizzato da        videoforyou.it\n                 338 202 8075", {align: 'right', underline: false, width:140})
+    doc.text("realizzato da      videoforyou.it\n               338 202 8075", {align: 'right', underline: false, width:135})
     // doc.text("338 202 8075", {
     // width: 150,
     // align: 'right',
     // underline: true
     // })
 
+    doc.page.dictionary.data.Rotate = 180
     doc.end();
 }
 module.exports = {pdf}
